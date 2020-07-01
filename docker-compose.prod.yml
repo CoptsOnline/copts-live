@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  web:
+    ports:
+      - 80:8069
+    volumes:
+      - ./config:/etc/odoo
+      - ./nginx:/etc
+      - ./addons:/mnt/extra-addons
+
+    # Odoo Environment Variables
+    # --------
+    #
+    # The odoo image uses a few different environment
+    # variables when running to connect to the postgres
+    # database.
+    #
+    # Make sure that they are the same as the database user
+    # defined in the db container environment variables.
+    environment:
+      - HOST=ls-e1e531d7771a67479eadb26389de08a2299ac620.ccpv5cmzluol.eu-central-1.rds.amazonaws.com
+      - USER=vvNZ88PyYsvxHzm8
+      - PASSWORD=AXbzkKCS9!5Y-Lze.cA

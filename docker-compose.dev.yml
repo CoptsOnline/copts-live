@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+  web:
+    depends_on:
+        - db
+  
+  
+    # Odoo Environment Variables
+    # --------
+    #
+    # The odoo image uses a few different environment
+    # variables when running to connect to the postgres
+    # database.
+    #
+    # Make sure that they are the same as the database user
+    # defined in the db container environment variables.
+    environment:
+      - HOST=db
+      - USER=vvNZ88PyYsvxHzm8
+      - PASSWORD=AXbzkKCS9!5Y-Lze.cA
+
+  # Database Container Service Definition
+  # --------
+  #
+  # All of the information needed to start up a postgresql
+  # container.
+  db:
+    image: postgres:11
+
+    # Database Environment Variables
+    # --------
+    #
+    # The postgresql image uses a few different environment
+    # variables when running to create the database. Set the
+    # username and password of the database user here.
+    #
+    # Make sure that they are the same as the database user
+    # defined in the web container environment variables.
+    environment:
+      - POSTGRES_PASSWORD=AXbzkKCS9!5Y-Lze.cA
+      - POSTGRES_USER=vvNZ88PyYsvxHzm8
+      - POSTGRES_DB=postgres  # Leave this set to postgres
